@@ -50,7 +50,7 @@
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
@@ -58,6 +58,7 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>components come with sop8,TO252</description>
 <packages>
 <package name="SO-8" urn="urn:adsk.eagle:footprint:28473/1">
 <description>&lt;b&gt;SO 8 small outline&lt;/b&gt;</description>
@@ -206,9 +207,25 @@ TS-003</description>
 </polygon>
 <circle x="0" y="0" radius="3.81" width="0.254" layer="94"/>
 </symbol>
+<symbol name="IR-DRIVER">
+<pin name="VCC" x="-12.7" y="3.81" length="middle"/>
+<pin name="HIN" x="-12.7" y="1.27" length="middle"/>
+<pin name="LIN" x="-12.7" y="-1.27" length="middle"/>
+<pin name="COM" x="-12.7" y="-3.81" length="middle"/>
+<pin name="LO" x="12.7" y="-3.81" length="middle" rot="R180"/>
+<pin name="VS" x="12.7" y="-1.27" length="middle" rot="R180"/>
+<pin name="HO" x="12.7" y="1.27" length="middle" rot="R180"/>
+<pin name="VB" x="12.7" y="3.81" length="middle" rot="R180"/>
+<text x="-9.144" y="-8.636" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-9.144" y="7.112" size="1.778" layer="95">&gt;NAME</text>
+<wire x1="-7.62" y1="6.35" x2="-7.62" y2="-6.35" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-6.35" x2="7.62" y2="-6.35" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-6.35" x2="7.62" y2="6.35" width="0.254" layer="94"/>
+<wire x1="7.62" y1="6.35" x2="-7.62" y2="6.35" width="0.254" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="N-MOSFET">
+<deviceset name="N-MOSFET" prefix="F">
 <gates>
 <gate name="G$1" symbol="N-MOSFET" x="2.54" y="0"/>
 </gates>
@@ -238,7 +255,7 @@ TS-003</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="P-MOSFET">
+<deviceset name="P-MOSFET" prefix="F">
 <gates>
 <gate name="G$1" symbol="P-MOSFET" x="0" y="0"/>
 </gates>
@@ -262,6 +279,31 @@ TS-003</description>
 <connect gate="G$1" pin="G" pad="1"/>
 <connect gate="G$1" pin="S" pad="2"/>
 </connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="IR-DRIVER" prefix="U">
+<gates>
+<gate name="G$1" symbol="IR-DRIVER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO-8">
+<connects>
+<connect gate="G$1" pin="COM" pad="4"/>
+<connect gate="G$1" pin="HIN" pad="2"/>
+<connect gate="G$1" pin="HO" pad="7"/>
+<connect gate="G$1" pin="LIN" pad="3"/>
+<connect gate="G$1" pin="LO" pad="5"/>
+<connect gate="G$1" pin="VB" pad="8"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+<connect gate="G$1" pin="VS" pad="6"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:28532/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
